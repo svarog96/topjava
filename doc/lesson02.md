@@ -18,7 +18,7 @@
 > - Переименовал `mealList.jsp` в `meals.jsp`
 > - Добавил еще один способ вывести `dateTime` через стандартную JSTL функцию `replace`  (префикс `fn` в шапке также надо поменять)
 
-- [jsp:useBean](http://www.java2ee.ru/jsp/useBean.html)
+- [jsp:useBean](http://www.labir.ru/j2ee/jspUseBean.html)
 - [MVC - Model View Controller](http://design-pattern.ru/patterns/mvc.html)
 
 ### ![video](https://cloud.githubusercontent.com/assets/13649199/13672715/06dbc6ce-e6e7-11e5-81a9-04fbddb9e488.png) 2. <a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFQndBeWFOa3phRTg">Optional: реализация CRUD</a>
