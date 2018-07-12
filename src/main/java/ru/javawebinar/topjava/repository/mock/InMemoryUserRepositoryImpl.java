@@ -8,10 +8,11 @@ import ru.javawebinar.topjava.repository.UserRepository;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Repository
-public class MockUserRepositoryImpl implements UserRepository {
-    private static final Logger log = LoggerFactory.getLogger(MockUserRepositoryImpl.class);
+public class InMemoryUserRepositoryImpl implements UserRepository {
+    private static final Logger log = LoggerFactory.getLogger(InMemoryUserRepositoryImpl.class);
 
     @Override
     public boolean delete(int id) {
