@@ -1,16 +1,40 @@
 package ru.javawebinar.topjava.model;
 
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+@NamedQueries({
+        @NamedQuery(name = Meal.DELETE, query = "delete  from Meal m where m.id=:id and m.user.id = :user_id"),
+        @NamedQuery(name = Meal.GET, query = "select m from Meal m where m.id=:id and m.user.id = :user_id"),
+        @NamedQuery(name = Meal.GET_ALL, query = "select m from Meal m where m.user.id = :user_id"),
+        @NamedQuery(name = Meal.GET_BETWEEN, query = "select m from Meal m where m.user.id= :user_id and m.dateTime between :start_time and :end_time")
+})
+
+@Entity
+@Table(name = "meals", uniqueConstraints = {@UniqueConstraint(columnNames = "id", name="meal_unique_id_idx")})
 public class Meal extends AbstractBaseEntity {
+
+    public static final String DELETE = "Meal.delete";
+    public static final String GET = "Meal.get";
+    public static final String GET_ALL = "Meal.getAll";
+    public static final String GET_BETWEEN = "Meal.getBetween";
+
+    @Column(name="date_time", nullable = false)
+    @NotEmpty
     private LocalDateTime dateTime;
 
+    @Column(name = "description", nullable = false)
+    @NotBlank
+    @Size(max = 200)
     private String description;
 
+    @Column(name = "calories", nullable = false)
+    @NotBlank
     private int calories;
 
     @ManyToOne(fetch = FetchType.LAZY)
